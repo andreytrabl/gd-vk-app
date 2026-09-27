@@ -150,4 +150,30 @@ saveBtn.addEventListener("click", async () => {
   }
 });
 
+// ===== Переключение вкладок =====
+const tabButtons = document.querySelectorAll(".tab");
+const panels = {
+  notify: document.getElementById("panelNotify"),
+  map: document.getElementById("panelMap"),
+};
+
+function switchTab(name) {
+  tabButtons.forEach((btn) => {
+    btn.classList.toggle("active", btn.dataset.tab === name);
+  });
+  Object.entries(panels).forEach(([key, el]) => {
+    el.classList.toggle("hidden", key !== name);
+  });
+
+  // Карте после показа нужно пересчитать размеры (Leaflet не умеет
+  // сам понять, что контейнер был display:none).
+  if (name === "map" && window.gdeBenzMap) {
+    setTimeout(() => window.gdeBenzMap.invalidateSize(), 0);
+  }
+}
+
+tabButtons.forEach((btn) => {
+  btn.addEventListener("click", () => switchTab(btn.dataset.tab));
+});
+
 init();
