@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<title>ГДЕ БЕНЗ</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <div class="screen">
+
+    <header class="header">
+      <div class="title">⛽ ГДЕ БЕНЗ</div>
+      <div class="subtitle">Тула и область</div>
+    </header>
+
+    <div class="status-box" id="statusBox">
+      Загрузка…
+    </div>
+
+    <button class="btn btn-primary" id="notifyBtn">
+      🔔 Включить уведомления
+    </button>
+
+    <section class="card">
+      <div class="card-title">Что отслеживать</div>
+
+      <label class="fuel-row">
+        <span>АИ-92</span>
+        <input type="checkbox" class="fuel-toggle" data-fuel="ai92" checked>
+      </label>
+      <label class="fuel-row">
+        <span>АИ-95</span>
+        <input type="checkbox" class="fuel-toggle" data-fuel="ai95" checked>
+      </label>
+      <label class="fuel-row">
+        <span>АИ-98</span>
+        <input type="checkbox" class="fuel-toggle" data-fuel="ai98">
+      </label>
+      <label class="fuel-row">
+        <span>АИ-100</span>
+        <input type="checkbox" class="fuel-toggle" data-fuel="ai100">
+      </label>
+      <label class="fuel-row">
+        <span>Дизель</span>
+        <input type="checkbox" class="fuel-toggle" data-fuel="diesel" checked>
+      </label>
+    </section>
+
+    <button class="btn btn-secondary" id="saveBtn">
+      Сохранить настройки
+    </button>
+
+    <div class="save-status" id="saveStatus"></div>
+
+    <div class="debug" id="debugBox"></div>
+
+  </div>
+
+  <script src="https://unpkg.com/@vkontakte/vk-bridge/dist/browser.min.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
