@@ -4,6 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 <title>ГДЕ БЕНЗ</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css">
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -15,50 +16,71 @@
       <div class="subtitle">Тула и область</div>
     </header>
 
-    <div class="status-box" id="statusBox">
-      Загрузка…
+    <div class="tabs">
+      <button class="tab active" id="tabNotify" data-tab="notify">🔔 Уведомления</button>
+      <button class="tab" id="tabMap" data-tab="map">🗺️ Карта</button>
     </div>
 
-    <button class="btn btn-primary" id="notifyBtn">
-      🔔 Включить уведомления
-    </button>
+    <!-- ===== ВКЛАДКА: УВЕДОМЛЕНИЯ ===== -->
+    <div class="panel" id="panelNotify">
 
-    <section class="card">
-      <div class="card-title">Что отслеживать</div>
+      <div class="status-box" id="statusBox">
+        Загрузка…
+      </div>
 
-      <label class="fuel-row">
-        <span>АИ-92</span>
-        <input type="checkbox" class="fuel-toggle" data-fuel="ai92" checked>
-      </label>
-      <label class="fuel-row">
-        <span>АИ-95</span>
-        <input type="checkbox" class="fuel-toggle" data-fuel="ai95" checked>
-      </label>
-      <label class="fuel-row">
-        <span>АИ-98</span>
-        <input type="checkbox" class="fuel-toggle" data-fuel="ai98">
-      </label>
-      <label class="fuel-row">
-        <span>АИ-100</span>
-        <input type="checkbox" class="fuel-toggle" data-fuel="ai100">
-      </label>
-      <label class="fuel-row">
-        <span>Дизель</span>
-        <input type="checkbox" class="fuel-toggle" data-fuel="diesel" checked>
-      </label>
-    </section>
+      <button class="btn btn-primary" id="notifyBtn">
+        🔔 Включить уведомления
+      </button>
 
-    <button class="btn btn-secondary" id="saveBtn">
-      Сохранить настройки
-    </button>
+      <section class="card">
+        <div class="card-title">Что отслеживать</div>
 
-    <div class="save-status" id="saveStatus"></div>
+        <label class="fuel-row">
+          <span>АИ-92</span>
+          <input type="checkbox" class="fuel-toggle" data-fuel="ai92" checked>
+        </label>
+        <label class="fuel-row">
+          <span>АИ-95</span>
+          <input type="checkbox" class="fuel-toggle" data-fuel="ai95" checked>
+        </label>
+        <label class="fuel-row">
+          <span>АИ-98</span>
+          <input type="checkbox" class="fuel-toggle" data-fuel="ai98">
+        </label>
+        <label class="fuel-row">
+          <span>АИ-100</span>
+          <input type="checkbox" class="fuel-toggle" data-fuel="ai100">
+        </label>
+        <label class="fuel-row">
+          <span>Дизель</span>
+          <input type="checkbox" class="fuel-toggle" data-fuel="diesel" checked>
+        </label>
+      </section>
+
+      <button class="btn btn-secondary" id="saveBtn">
+        Сохранить настройки
+      </button>
+
+      <div class="save-status" id="saveStatus"></div>
+    </div>
+
+    <!-- ===== ВКЛАДКА: КАРТА ===== -->
+    <div class="panel hidden" id="panelMap">
+      <div class="map-legend">
+        <span><i class="dot dot-green"></i> есть топливо</span>
+        <span><i class="dot dot-grey"></i> нет данных</span>
+      </div>
+      <div id="mapContainer"></div>
+      <div class="map-hint">Демо-данные. Реальные точки — после подключения backend.</div>
+    </div>
 
     <div class="debug" id="debugBox"></div>
 
   </div>
 
   <script src="https://unpkg.com/@vkontakte/vk-bridge/dist/browser.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
   <script src="app.js"></script>
+  <script src="map.js"></script>
 </body>
 </html>
